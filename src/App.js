@@ -1,24 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import SingIn from './components/sign-in-page';
+import "bootstrap/dist/css/bootstrap.css"
+import FeedPage from './components/feed-page';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <div>
+          <Routes>
+            <Route exact path='/' element={<SingIn />} />
+            <Route path='/feed' element={<FeedPage />} />
+            <Route path='*' element={<Navigate to="/" />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
+
   );
 }
 
